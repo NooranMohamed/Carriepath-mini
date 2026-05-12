@@ -9,6 +9,7 @@ CAREER_PATHS = {
     "technical": {
         "id": "technical",
         "title": "المسار التحليلي والتقني",
+        "emoji": "💻",
         "color": "#00d4ff",
         "gradient": "linear-gradient(135deg, #0a0f2e 0%, #0d1b4b 50%, #0a2a4a 100%)",
         "accent": "#00d4ff",
@@ -28,6 +29,7 @@ CAREER_PATHS = {
     "human": {
         "id": "human",
         "title": "المسار الإنساني والرعائي",
+        "emoji": "🤝",
         "color": "#ff6b9d",
         "gradient": "linear-gradient(135deg, #1a0a1e 0%, #2d0f35 50%, #1a0a2e 100%)",
         "accent": "#ff6b9d",
@@ -47,6 +49,7 @@ CAREER_PATHS = {
     "creative": {
         "id": "creative",
         "title": "المسار الإبداعي والتصميمي",
+        "emoji": "🎨",
         "color": "#ffd700",
         "gradient": "linear-gradient(135deg, #1a1000 0%, #2d1f00 50%, #1a1500 100%)",
         "accent": "#ffd700",
@@ -66,6 +69,7 @@ CAREER_PATHS = {
     "business": {
         "id": "business",
         "title": "المسار الإداري والتجاري",
+        "emoji": "📈",
         "color": "#00ff88",
         "gradient": "linear-gradient(135deg, #001a0f 0%, #002d1a 50%, #001a10 100%)",
         "accent": "#00ff88",
@@ -90,6 +94,7 @@ QUESTIONS = [
     {
         "id": 1,
         "text": "ما الذي يستهويك أكثر في وقت الفراغ؟",
+        "icon": "🌟",
         "options": [
             {"text": "حل الألغاز والمسائل المنطقية", "weights": [3, 0, 0, 1]},
             {"text": "مساعدة الأصدقاء والاستماع لمشاكلهم", "weights": [0, 3, 0, 1]},
@@ -100,6 +105,7 @@ QUESTIONS = [
     {
         "id": 2,
         "text": "كيف تفضّل التعامل مع المشكلات؟",
+        "icon": "🧩",
         "options": [
             {"text": "بالتحليل المنطقي وجمع البيانات", "weights": [3, 0, 0, 1]},
             {"text": "بالتعاطف وفهم مشاعر الأشخاص المعنيين", "weights": [0, 3, 0, 0]},
@@ -110,6 +116,7 @@ QUESTIONS = [
     {
         "id": 3,
         "text": "ما بيئة العمل المثالية لك؟",
+        "icon": "🏢",
         "options": [
             {"text": "مكتب هادئ مع شاشات وأكواد وأنظمة", "weights": [3, 0, 0, 0]},
             {"text": "مع الناس والمجتمع وجهاً لوجه", "weights": [0, 3, 0, 1]},
@@ -120,6 +127,7 @@ QUESTIONS = [
     {
         "id": 4,
         "text": "ما الذي يشعرك بالرضا الحقيقي بعد إنجازه؟",
+        "icon": "✨",
         "options": [
             {"text": "بناء نظام أو حل تقني يعمل بدقة وكفاءة", "weights": [3, 0, 0, 0]},
             {"text": "تحسين حياة شخص أو مساعدته على التعافي", "weights": [0, 3, 0, 0]},
@@ -130,6 +138,7 @@ QUESTIONS = [
     {
         "id": 5,
         "text": "كيف يصفك أصدقاؤك عادةً؟",
+        "icon": "👥",
         "options": [
             {"text": "ذكي ومحلل ودقيق في كل التفاصيل", "weights": [3, 0, 0, 1]},
             {"text": "متعاطف ومهتم ومساعد للجميع", "weights": [0, 3, 0, 0]},
@@ -140,6 +149,7 @@ QUESTIONS = [
     {
         "id": 6,
         "text": "ما المادة الدراسية التي كانت الأقرب إلى قلبك؟",
+        "icon": "📚",
         "options": [
             {"text": "الرياضيات والعلوم والحاسوب", "weights": [3, 0, 0, 0]},
             {"text": "علم النفس والاجتماع والصحة", "weights": [0, 3, 0, 1]},
@@ -150,6 +160,7 @@ QUESTIONS = [
     {
         "id": 7,
         "text": "في المشاريع الجماعية، أنت عادةً...",
+        "icon": "🤝",
         "options": [
             {"text": "المحلل الذي يجمع البيانات ويعمل على الأنظمة", "weights": [3, 0, 0, 1]},
             {"text": "الوسيط الذي يحل الخلافات ويدعم الفريق", "weights": [0, 3, 0, 1]},
@@ -160,6 +171,7 @@ QUESTIONS = [
     {
         "id": 8,
         "text": "ما الذي يقلقك أكثر في العالم؟",
+        "icon": "🌍",
         "options": [
             {"text": "تأخر التطور التكنولوجي وضعف الابتكار", "weights": [3, 0, 0, 0]},
             {"text": "معاناة الناس وقلة الرعاية الصحية والاجتماعية", "weights": [0, 3, 0, 0]},
@@ -170,6 +182,7 @@ QUESTIONS = [
     {
         "id": 9,
         "text": "ما هدفك المهني الأسمى؟",
+        "icon": "🎯",
         "options": [
             {"text": "اختراع تقنية أو نظام يغير طريقة عمل العالم", "weights": [3, 0, 0, 1]},
             {"text": "مساعدة أكبر عدد ممكن من الناس وتحسين حياتهم", "weights": [0, 3, 0, 0]},
@@ -180,6 +193,7 @@ QUESTIONS = [
     {
         "id": 10,
         "text": "ما نوع المحتوى الذي تستمتع بقراءته أو مشاهدته؟",
+        "icon": "📱",
         "options": [
             {"text": "علوم وتكنولوجيا وبرمجة وذكاء اصطناعي", "weights": [3, 0, 0, 0]},
             {"text": "قصص إنسانية ومقالات نفسية واجتماعية", "weights": [0, 3, 0, 0]},
@@ -222,37 +236,64 @@ def index():
 
 @app.route("/quiz")
 def quiz():
-    session["answers"] = []
-    session["current_q"] = 0
-    return render_template("quiz.html", questions=QUESTIONS)
+    # إذا كان أول دخول للاختبار، نصفّر كل شيء
+    if "answers" not in session:
+        session["answers"] = []
+        session["current_q"] = 0
+
+    current_q = session.get("current_q", 0)
+
+    # إذا أجاب على كل الأسئلة، اذهب للنتيجة
+    if current_q >= len(QUESTIONS):
+        return redirect(url_for("result"))
+
+    question = QUESTIONS[current_q]
+    total = len(QUESTIONS)
+    current_num = current_q + 1
+    progress = round((current_q / total) * 100)
+
+    return render_template(
+        "quiz.html",
+        question=question,
+        current_num=current_num,
+        total=total,
+        progress=progress
+    )
 
 
 @app.route("/answer", methods=["POST"])
 def answer():
+    """استقبال إجابة سؤال واحد والانتقال للتالي"""
     answer_idx = int(request.form.get("answer", 0))
-    answers = session.get("answers", [])
-    answers.append(answer_idx)
-    session["answers"] = answers
+    current_q = session.get("current_q", 0)
 
-    if len(answers) >= len(QUESTIONS):
+    # حفظ الإجابة في الـ session
+    answers = session.get("answers", [])
+
+    # إذا كان السؤال ده جديد، أضف الإجابة
+    # إذا كان رجع وعدّل، حدّث الإجابة الموجودة
+    if current_q < len(answers):
+        answers[current_q] = answer_idx
+    else:
+        answers.append(answer_idx)
+
+    session["answers"] = answers
+    session["current_q"] = current_q + 1
+
+    # إذا انتهت الأسئلة، اذهب للنتيجة
+    if session["current_q"] >= len(QUESTIONS):
         return redirect(url_for("result"))
 
     return redirect(url_for("quiz"))
 
 
-@app.route("/submit", methods=["POST"])
-def submit():
-    """استقبال جميع الإجابات دفعة واحدة من JavaScript"""
-    data = request.get_json()
-    answers = data.get("answers", [])
-    session["answers"] = answers
-    winner, scores, percentages = calculate_result(answers)
-    session["result"] = {
-        "winner": winner,
-        "scores": scores,
-        "percentages": percentages
-    }
-    return {"redirect": url_for("result")}
+@app.route("/back", methods=["POST"])
+def go_back():
+    """الرجوع للسؤال السابق"""
+    current_q = session.get("current_q", 0)
+    if current_q > 0:
+        session["current_q"] = current_q - 1
+    return redirect(url_for("quiz"))
 
 
 @app.route("/result")

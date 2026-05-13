@@ -1,1 +1,53 @@
-draft
+{% extends "base.html" %}
+{% block title %}الاختبار — CareerPath Mini{% endblock %}
+
+{% block content %}
+<section class="quiz-section">
+
+    <!-- Progress Bar -->
+    <div class="quiz-header">
+        <div class="progress-info">
+            <span class="q-counter">السؤال {{ current_num }} من {{ total }}</span>
+            <span class="q-percent">{{ progress }}%</span>
+        </div>
+        <div class="progress-bar-outer">
+            <div class="progress-bar-inner" style="width: {{ progress }}%"></div>
+        </div>
+    </div>
+
+    <!-- Current Question -->
+    <div class="question-slide active">
+        <div class="q-icon">{{ question.icon }}</div>
+        <h2 class="q-text">{{ question.text }}</h2>
+
+        <!-- كل خيار = فورم POST منفصل -->
+        <div class="options-grid">
+            {% for opt in question.options %}
+            <form method="POST" action="{{ url_for('answer') }}">
+                <input type="hidden" name="answer" value="{{ loop.index0 }}">
+                <button type="submit" class="option-btn">
+                    <span class="opt-letter">{{ ['أ','ب','ج','د'][loop.index0] }}</span>
+                    <span class="opt-text">{{ opt.text }}</span>
+                    <span class="opt-arrow">←</span>
+                </button>
+            </form>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- زر الرجوع فقط إذا مش أول سؤال -->
+    {% if current_num > 1 %}
+    <div class="quiz-nav">
+        <form method="POST" action="{{ url_for('go_back') }}">
+            <button type="submit" class="btn-back">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                السؤال السابق
+            </button>
+        </form>
+    </div>
+    {% endif %}
+
+</section>
+{% endblock %}

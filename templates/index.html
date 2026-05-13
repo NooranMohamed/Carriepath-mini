@@ -1,1 +1,113 @@
-draft
+{% extends "base.html" %}
+{% block title %}CareerPath Mini — اكتشف مسارك المهني{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-badge">✨ اكتشف نفسك</div>
+    <h1 class="hero-title">
+        ما هو <span class="gradient-text">مسارك</span><br>المهني الحقيقي؟
+    </h1>
+    <p class="hero-subtitle">
+        اختبار ذكي من <strong>10 أسئلة</strong> يكشف ميولك وشخصيتك،<br>
+        ويرشدك نحو المجال المهني الأنسب لك
+    </p>
+    <a href="{{ url_for('quiz') }}" class="btn-hero">
+        <span>ابدأ الاختبار الآن</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+    </a>
+    <p class="hero-note">⏱ يستغرق أقل من 3 دقائق · مجاني 100%</p>
+
+    <!-- Floating cards -->
+    <div class="floating-cards">
+        <div class="f-card f-card-1">
+            <span class="f-emoji">💻</span>
+            <span>تقني</span>
+        </div>
+        <div class="f-card f-card-2">
+            <span class="f-emoji">🤝</span>
+            <span>إنساني</span>
+        </div>
+        <div class="f-card f-card-3">
+            <span class="f-emoji">🎨</span>
+            <span>إبداعي</span>
+        </div>
+        <div class="f-card f-card-4">
+            <span class="f-emoji">📈</span>
+            <span>تجاري</span>
+        </div>
+    </div>
+</section>
+
+<!-- How it works -->
+<section class="how-section">
+    <h2 class="section-title">كيف يعمل؟</h2>
+    <div class="steps-grid">
+        <div class="step-card">
+            <div class="step-num">01</div>
+            <div class="step-icon">📝</div>
+            <h3>أجب على الأسئلة</h3>
+            <p>10 أسئلة سريعة عن اهتماماتك وطريقة تفكيرك وأهدافك</p>
+        </div>
+        <div class="step-card">
+            <div class="step-num">02</div>
+            <div class="step-icon">🧠</div>
+            <h3>نحلل إجاباتك</h3>
+            <p>يقيّم النظام ردودك ويحسب المسار الأنسب لشخصيتك</p>
+        </div>
+        <div class="step-card">
+            <div class="step-num">03</div>
+            <div class="step-icon">🗺️</div>
+            <h3>اكتشف مسارك</h3>
+            <p>تحصل على نتيجة مفصلة بالوظائف والمهارات وسبب الاختيار</p>
+        </div>
+    </div>
+</section>
+
+<!-- Career Paths Preview -->
+<section class="paths-section">
+    <h2 class="section-title">المسارات الأربعة</h2>
+    <div class="paths-grid">
+        <a href="{{ url_for('detail', path_id='technical') }}" class="path-preview-card path-technical">
+            <div class="path-glow"></div>
+            <div class="path-emoji">💻</div>
+            <h3>التحليلي والتقني</h3>
+            <p>برمجة · بيانات · تكنولوجيا</p>
+        </a>
+        <a href="{{ url_for('detail', path_id='human') }}" class="path-preview-card path-human">
+            <div class="path-glow"></div>
+            <div class="path-emoji">🤝</div>
+            <h3>الإنساني والرعائي</h3>
+            <p>صحة · تعليم · خدمة المجتمع</p>
+        </a>
+        <a href="{{ url_for('detail', path_id='creative') }}" class="path-preview-card path-creative">
+            <div class="path-glow"></div>
+            <div class="path-emoji">🎨</div>
+            <h3>الإبداعي والتصميمي</h3>
+            <p>فن · تصميم · إنتاج إبداعي</p>
+        </a>
+        <a href="{{ url_for('detail', path_id='business') }}" class="path-preview-card path-business">
+            <div class="path-glow"></div>
+            <div class="path-emoji">📈</div>
+            <h3>الإداري والتجاري</h3>
+            <p>إدارة · تسويق · ريادة أعمال</p>
+        </a>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="cta-box">
+        <h2>جاهز لاكتشاف مسارك؟</h2>
+        <p>انضم لآلاف الطلاب الذين اكتشفوا ميولهم المهنية</p>
+        <a href="{{ url_for('quiz') }}" class="btn-hero">
+            <span>ابدأ الاختبار الآن</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </a>
+    </div>
+</section>
+{% endblock %}

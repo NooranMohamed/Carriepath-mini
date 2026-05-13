@@ -1,1 +1,102 @@
-Draft
+{% extends "base.html" %}
+{% block title %}{{ career.title }} — CareerPath Mini{% endblock %}
+
+{% block content %}
+<section class="detail-section" style="--career-color: {{ career.color }}; --career-gradient: {{ career.gradient }};">
+
+    <!-- Hero -->
+    <div class="detail-hero">
+        <a href="{{ url_for('index') }}" class="back-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            العودة للرئيسية
+        </a>
+        <div class="detail-hero-emoji">{{ career.emoji }}</div>
+        <h1 class="detail-hero-title">{{ career.title }}</h1>
+        <p class="detail-hero-desc">{{ career.description }}</p>
+        <a href="{{ url_for('quiz') }}" class="btn-take-quiz" style="--c: {{ career.color }}">
+            اكتشف مسارك بالاختبار
+        </a>
+    </div>
+
+    <!-- Content Grid -->
+    <div class="detail-content-grid">
+
+        <!-- Jobs Section -->
+        <div class="detail-big-card">
+            <div class="big-card-header">
+                <span class="big-card-icon">💼</span>
+                <h2>الوظائف المتاحة</h2>
+            </div>
+            <div class="jobs-list">
+                {% for job in career.jobs %}
+                <div class="job-item">
+                    <span class="job-dot" style="background: {{ career.color }}"></span>
+                    <span>{{ job }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="detail-big-card">
+            <div class="big-card-header">
+                <span class="big-card-icon">⚡</span>
+                <h2>المهارات المطلوبة</h2>
+            </div>
+            <div class="skills-tags">
+                {% for skill in career.skills %}
+                <span class="skill-tag" style="border-color: {{ career.color }}; color: {{ career.color }}">
+                    {{ skill }}
+                </span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Why Section (full width) -->
+        <div class="detail-big-card full-width">
+            <div class="big-card-header">
+                <span class="big-card-icon">🔍</span>
+                <h2>لماذا هذا المسار؟</h2>
+            </div>
+            <p class="why-text">{{ career.reason }}</p>
+        </div>
+
+    </div>
+
+    <!-- Other Paths -->
+    <div class="detail-others">
+        <h2>مسارات أخرى تستحق الاستكشاف</h2>
+        <div class="others-grid">
+            {% for pid, pdata in other_paths.items() %}
+            <a href="{{ url_for('detail', path_id=pid) }}" class="other-detail-card" style="--c: {{ pdata.color }}">
+                <div class="other-card-inner">
+                    <span class="other-emoji">{{ pdata.emoji }}</span>
+                    <div>
+                        <h4>{{ pdata.title }}</h4>
+                        <p>{{ pdata.description[:80] }}...</p>
+                    </div>
+                    <svg class="other-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="detail-cta">
+        <h2>هل هذا مسارك؟</h2>
+        <p>خذ الاختبار لتتأكد من المسار الأنسب لشخصيتك وميولك</p>
+        <a href="{{ url_for('quiz') }}" class="btn-hero">
+            <span>ابدأ الاختبار الآن</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </a>
+    </div>
+
+</section>
+{% endblock %}

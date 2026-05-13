@@ -202,3 +202,132 @@ QUESTIONS = [
         ]
     }
 ]
+def calculate_result(answers):
+    """حساب نتيجة الاختبار بناءً على الإجابات"""
+    scores = {"technical": 0, "human": 0, "creative": 0, "business": 0}
+    keys = ["technical", "human", "creative", "business"]
+
+    for q_idx, a_idx in enumerate(answers):
+        if q_idx < len(QUESTIONS) and a_idx < len(QUESTIONS[q_idx]["options"]):
+            weights = QUESTIONS[q_idx]["options"][a_idx]["weights"]
+            for i, key in enumerate(keys):
+                scores[key] += weights[i]
+
+    # إيجاد المسار الأعلى نقاطاً
+    winner = max(scores, key=scores.get)
+    total = sum(scores.values())
+
+    # حساب النسب المئوية
+    percentages = {}
+    for k, v in scores.items():
+        percentages[k] = round((v / total * 100) if total > 0 else 0)
+
+    return winner, scores, percentages
+
+
+# ===== المسارات (Routes) =====
+
+@app.route("/")
+def index():
+    session.clear()
+    return render_template("index.html")
+
+
+@app.route("/quiz")
+def quiz():
+    # إذا كان أول دخول للاختبار، نصفّر كل شيء
+    if "answers" not in session:
+        session["answers"] = []
+        session["current_q"] = 0
+
+    current_q = session.get("current_q", 0)
+
+    # إذا أجاب على كل الأسئلة، اذهب للنتيجة
+    if current_q >= len(QUESTIONS):
+        return redirect(url_for("result"))
+
+    question = QUESTIONS[current_q]
+    total = len(QUESTIONS)
+    current_num = current_q + 1
+    progress = round((current_q / total) * 100)
+
+    return render_template(
+        "quiz.html",
+        question=question,
+        current_num=current_num,
+        total=total,
+        progress=progress
+    )
+
+
+@app.route("/answer", methods=["POST"])
+def answer():
+    """استقبال إجابة سؤال واحد والانتقال للتالي"""
+    answer_idx = int(request.form.get("answer", 0))
+    current_q = session.get("current_q", 0)
+
+    # حفظ الإجابة في الـ session
+    answers = session.get("answers", [])
+
+    # إذا كان السؤال ده جديد، أضف الإجابة
+    # إذا كان رجع وعدّل، حدّث الإجابة الموجودة
+    if current_q < len(answers):
+        answers[current_q] = answer_idx
+    else:
+        answers.append(answer_idx)
+
+    session["answers"] = answers
+    session["current_q"] = current_q + 1
+
+    # إذا انتهت الأسئلة، اذهب للنتيجة
+    if session["current_q"] >= len(QUESTIONS):
+        return redirect(url_for("result"))
+
+    return redirect(url_for("quiz"))
+
+
+@app.route("/back", methods=["POST"])
+def go_back():
+    """الرجوع للسؤال السابق"""
+    current_q = session.get("current_q", 0)
+    if current_q > 0:
+        session["current_q"] = current_q - 1
+    return redirect(url_for("quiz"))
+
+
+@app.route("/result")
+def result():
+    answers = session.get("answers", [])
+    if not answers:
+        return redirect(url_for("index"))
+
+    result_data = session.get("result")
+    if not result_data:
+        winner, scores, percentages = calculate_result(answers)
+        result_data = {"winner": winner, "scores": scores, "percentages": percentages}
+        session["result"] = result_data
+
+    winner = result_data["winner"]
+    career = CAREER_PATHS[winner]
+    percentages = result_data["percentages"]
+    all_paths = CAREER_PATHS
+
+    return render_template(
+        "result.html",
+        career=career,
+        percentages=percentages,
+        all_paths=all_paths
+    )
+
+
+@app.route("/detail/<path_id>")
+def detail(path_id):
+    if path_id not in CAREER_PATHS:
+        return redirect(url_for("index"))
+    career = CAREER_PATHS[path_id]
+    other_paths = {k: v for k, v in CAREER_PATHS.items() if k != path_id}
+    return render_template("detail.html", career=career, other_paths=other_paths)
+
+
+if name == "main":
+    app.run(debug=True, host="0.0.0.0", port=5000)
